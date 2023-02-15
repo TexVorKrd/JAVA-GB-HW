@@ -1,25 +1,28 @@
 package seminar2.hw2;
 
-
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
+
 
 public class hw1 {
     public static void main(String[] args) {
 
-        Scanner scanner =new Scanner(System.in);
-        System.out.println("N=");
-        Map<Integer,Boolean> isPrimary= new HashMap<>();
+        Map<Integer, Boolean> myPrimary = new HashMap<>();
+        double sum = 0;
 
-        int[] myArray = new int[scanner.nextInt()];
-        for (int i=0;i<myArray.length;i++){
-            myArray[i]= (int) (Math.random()*1000);
-            if (isPrimary.containsKey(i)){
+        int[] myArray = {2, 3, 5, 7, 4, 8, 149, 19, 23, 29, 982_451_653, 7, 25};
 
+        for (int element : myArray) {
+            if (myPrimary.containsKey(element)) {
+                sum += element;
+            } else {
+                if (isPrimeNum(element)) {
+                    myPrimary.put(element, true);
+                    sum += element;
+                }
             }
         }
-
+        System.out.println("SUM Prime Num= " + sum);
     }
 
     /**
@@ -28,8 +31,8 @@ public class hw1 {
      * @param a - int целое число int
      * @return - boolean
      */
-    public boolean primeNum(int a) {
-        if (a <= 0) return false;
+    public static boolean isPrimeNum(int a) {
+        if (a < 2) return false;
         for (int i = 2; i <= Math.sqrt(a); i++) {
             if (a % i == 0) return false;
         }
