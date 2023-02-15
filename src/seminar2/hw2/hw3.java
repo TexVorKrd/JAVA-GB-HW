@@ -6,7 +6,7 @@ public class hw3 {
         int sum = 0;
 
         for (int i = 0; i < array.length; i++) {
-            if (array[i] > 9 && array[i] < 100 || array[i] > -100 && array[i] < -10) sum += i;
+            if ((array[i] > 9 && array[i] < 100) || (array[i] > -100 && array[i] < -10)) sum += i;
         }
 
         for (int i = 0; i < array.length; i++) {
